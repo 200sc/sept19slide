@@ -70,10 +70,10 @@ func main() {
 
 	setups := []slideSetup{
 		intro,
-		//engines,
-		//examples,
+		engines,
+		examples,
 		philo,
-		//fullGames,
+		fullGames,
 		conclusion,
 	}
 
@@ -159,8 +159,6 @@ func addIntro(i int, sslides []*static.Slide) {
 			"- Game engine in Go",
 			"- Targets zero non-Go dependencies",
 			"- Primarily 2D",
-			"- First Release: 1.0.0 in July 2017",
-			"- Last Release: 2.3.1 in Sept 2019",
 		)...,
 	)
 
@@ -196,6 +194,96 @@ func addIntro(i int, sslides []*static.Slide) {
 	// strategy, and then some interesting use cases for applying
 	// design patterns that Go makes easy with particle generation,
 	// artificial intelligence, and level construction.
+}
+
+var (
+	examples = slideSetup{
+		addExamples,
+		1,
+	}
+)
+
+func addExamples(i int, sslides []*static.Slide) {
+	sslides[i].Append(show.Title("Examples"))
+}
+
+var (
+	fullGames = slideSetup{
+		addFullGames,
+		1,
+	}
+)
+
+func addFullGames(i int, sslides []*static.Slide) {
+	sslides[i].Append(show.Title("Full Games"))
+}
+
+var (
+	engines = slideSetup{
+		addEngines,
+		7,
+	}
+)
+
+func addEngines(i int, sslides []*static.Slide) {
+	sslides[i].Append(show.Title("Other Game Engines in Go"))
+	sslides[i+1].Append(show.Header("Abandoned Engines"))
+	sslides[i+1].Append(
+		show.TxtSetFrom(Gnuolane44, .25, .35, 0, .07,
+			"- Azul3D",
+			"- GarageEngine",
+			"- glop",
+		)...,
+	)
+	sslides[i+1].Append(show.ImageAt("azul_logo.PNG", .7, .5, mod.Scale(.25, .25)))
+
+	sslides[i+2].Append(show.Header("Termloop"))
+	sslides[i+2].Append(
+		show.TxtSetFrom(Gnuolane44, .25, .35, 0, .07,
+			"- In-Terminal Games (2D)",
+			"- First Release: Never",
+		)...,
+	)
+	sslides[i+2].Append(show.ImageAt("termloop_maze.PNG", .7, .5, mod.Scale(.25, .25)))
+
+	sslides[i+3].Append(show.Header("Engo"))
+	sslides[i+3].Append(
+		show.TxtSetFrom(Gnuolane44, .25, .35, 0, .07,
+			"- Primarily 2D",
+			"- First Release: 1.0.0 in May 2018",
+			"- Last Release: 1.0.4 in April 2019",
+		)...,
+	)
+	sslides[i+3].Append(show.ImageAt("engo_logo.PNG", .7, .5, mod.Scale(1, 1)))
+
+	sslides[i+4].Append(show.Header("G3N"))
+	sslides[i+4].Append(
+		show.TxtSetFrom(Gnuolane44, .25, .35, 0, .07,
+			"- Primarily 3D",
+			"- First Release: 0.1.0 in Sept 2019",
+			"- Last Release: 0.1.0 in Sept 2019",
+		)...,
+	)
+	sslides[i+4].Append(show.ImageAt("g3n_logo.PNG", .7, .5, mod.Scale(.5, .5)))
+	sslides[i+5].Append(show.Header("Pixel"))
+	sslides[i+5].Append(
+		show.TxtSetFrom(Gnuolane44, .25, .35, 0, .07,
+			"- Primarily 2D",
+			"- First Release: 0.5.0 in April 2017",
+			"- Last Release: 0.8.0 in Oct 2018",
+		)...,
+	)
+	sslides[i+5].Append(show.ImageAt("Pixel.PNG", .7, .5, mod.Scale(.5, .5)))
+	sslides[i+6].Append(show.Header("Ebiten"))
+	sslides[i+6].Append(
+		show.TxtSetFrom(Gnuolane44, .25, .35, 0, .07,
+			"- Primarily 2D",
+			"- Supports Mobile/WASM",
+			"- First Release: 1.0.0 in June 2016",
+			"- Last Release: 1.10.0-alpha in Sept 2019",
+		)...,
+	)
+	sslides[i+6].Append(show.ImageAt("ebitenFlappy.PNG", .7, .5, mod.Scale(.5, .5)))
 }
 
 var (
